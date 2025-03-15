@@ -13,6 +13,6 @@ const nextConfig = {
   basePath: '/landing-portifolio',
   assetPrefix: '/landing-portifolio/',
   trailingSlash: true
-};
+}
 
-export default nextConfig; 
+module.exports = nextConfig 
