@@ -4,7 +4,7 @@ import { getBaseUrl } from '@/utils/urlUtils';
 /**
  * Função que retorna os dados pessoais com o basePath correto
  */
-export const getInformacoesPessoais = (basePath: string = ''): InformacoesPessoais => ({
+export const getInformacoesPessoais = (): InformacoesPessoais => ({
   nome: 'Hencheo',
   titulo: 'Desenvolvedor Full Stack',
   resumo: 'Desenvolvedor com capacidade técnica para identificar e resolver problemas complexos. Especializado em Python, Django REST Framework, React Native com Expo e Next.js. Focado em criar soluções eficientes e escaláveis que transformam ideias em aplicações funcionais com experiências excepcionais para o usuário.',

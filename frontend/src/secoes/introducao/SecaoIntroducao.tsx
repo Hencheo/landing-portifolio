@@ -4,11 +4,11 @@ import { motion, LayoutGroup } from 'framer-motion';
 import Image from 'next/image';
 import { Squares } from '@/componentes/ui/squares-background';
 import { TextRotate } from '@/componentes/ui/text-rotate';
-import { FloatingTechs } from '@/componentes/ui/floating-techs';
-import { informacoesPessoais } from '@/dados';
+// import { FloatingTechs } from '@/componentes/ui/floating-techs';
+// import { informacoesPessoais } from '@/dados';
 import BotaoEstrela from '@/componentes/ui/BotaoEstrela';
-import { usePathname } from 'next/navigation';
-import { useBasePath } from '@/contextos/BasePath';
+// import { usePathname } from 'next/navigation';
+// import { useBasePath } from '@/contextos/BasePath';
 import { getBaseUrl } from '@/utils/urlUtils';
 
 /**
@@ -16,8 +16,8 @@ import { getBaseUrl } from '@/utils/urlUtils';
  * Esta será a primeira seção visível do portfólio
  */
 const SecaoIntroducao = () => {
-  const { basePath } = useBasePath();
-  const pathname = usePathname();
+  // const { basePath } = useBasePath();
+  // const pathname = usePathname();
 
   // Funções para navegação entre seções
   const scrollParaPerfil = () => {

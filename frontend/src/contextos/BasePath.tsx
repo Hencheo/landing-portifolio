@@ -33,8 +33,8 @@ export const BasePathProvider = ({ children }: BasePathProviderProps) => {
     const detectedBasePath = pathname.startsWith('/landing-portifolio') ? '/landing-portifolio' : '';
     setBasePath(detectedBasePath);
     
-    // Atualizar as informações pessoais com o basePath correto
-    setInformacoesPessoaisAtualizadas(getInformacoesPessoais(detectedBasePath));
+    // Atualizar as informações pessoais
+    setInformacoesPessoaisAtualizadas(getInformacoesPessoais());
   }, [pathname]);
 
   return (
