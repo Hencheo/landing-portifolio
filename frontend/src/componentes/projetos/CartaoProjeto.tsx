@@ -66,7 +66,7 @@ const CartaoProjeto = ({ projeto, indice }: CartaoProjetoProps) => {
       {/* Cabeçalho do cartão com imagem e título */}
       <div className="relative h-56 sm:h-64 w-full overflow-hidden">
         <Image
-          src={getImagePath(projeto.imagemCapa)}
+          src={projeto.imagemCapa}
           alt={`Imagem do projeto ${projeto.titulo}`}
           fill
           className="object-cover transition-transform duration-500 hover:scale-105"
@@ -139,7 +139,7 @@ const CartaoProjeto = ({ projeto, indice }: CartaoProjetoProps) => {
               {projeto.imagensGaleria.map((imagem, index) => (
                 <div key={index} className="relative h-20 rounded-md overflow-hidden border border-blue-500/10">
                   <Image
-                    src={getImagePath(imagem)}
+                    src={imagem}
                     alt={`Imagem ${index + 1} do projeto ${projeto.titulo}`}
                     fill
                     className="object-cover"
