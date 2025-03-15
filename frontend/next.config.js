@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const isProduction = process.env.NODE_ENV === 'production';
+const repoName = 'hencheo-portifolio';
 
 const nextConfig = {
   output: 'export',
@@ -13,8 +14,8 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   ...(isProduction && {
-    basePath: '/hencheo-portifolio',
-    assetPrefix: '/hencheo-portifolio/',
+    basePath: `/${repoName}`,
+    assetPrefix: `/${repoName}/`,
   })
 }
 
