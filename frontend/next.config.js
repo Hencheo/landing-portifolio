@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
+const isProduction = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
-    domains: ['fonts.googleapis.com', 'fonts.gstatic.com'],
   },
   eslint: {
     ignoreDuringBuilds: true,
@@ -11,23 +12,10 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  basePath: '/landing-portifolio',
-  assetPrefix: '',
-  trailingSlash: true,
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-      use: {
-        loader: 'url-loader',
-        options: {
-          limit: 100000,
-          name: '[name].[ext]',
-          publicPath: '/landing-portifolio',
-        },
-      },
-    });
-    return config;
-  },
+  ...(isProduction && {
+    basePath: '/landing-portifolio',
+    assetPrefix: '/landing-portifolio/',
+  })
 }
 
 module.exports = nextConfig 
