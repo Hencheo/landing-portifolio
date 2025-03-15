@@ -56,7 +56,7 @@ const SecaoSobre = () => {
               <div className="relative h-96 rounded-lg overflow-hidden shadow-xl shadow-blue-500/20 border border-blue-500/20">
                 {informacoesPessoais.fotoSobre ? (
                   <Image
-                    src={getImagePath(informacoesPessoais.fotoSobre)}
+                    src={getImagePath('/imagens/perfil/sobre.png')}
                     alt={`Foto de ${informacoesPessoais.nome}`}
                     fill
                     className="object-cover"
