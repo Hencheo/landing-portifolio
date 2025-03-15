@@ -10,6 +10,6 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function getImagePath(path: string): string {
-  const basePath = process.env.NODE_ENV === 'production' ? '/landing-page-portifolio' : '';
+  const basePath = process.env.NODE_ENV === 'production' ? '/landing-portifolio' : '';
   return `${basePath}${path}`;
 }
