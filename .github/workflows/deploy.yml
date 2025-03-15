@@ -1,5 +1,6 @@
 name: Deploy to GitHub Pages
 
+# Workflow para fazer deploy automático no GitHub Pages
 on:
   push:
     branches:
