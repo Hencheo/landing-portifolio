@@ -13,14 +13,18 @@
 export function getBaseUrl(url: string): string {
   // No cliente, verificamos a URL atual
   if (typeof window !== 'undefined') {
-    const pathname = window.location.pathname;
-    const basePath = pathname.startsWith('/landing-portifolio') 
-      ? '/landing-portifolio' 
-      : '';
+    // Forçamos o uso do basePath em produção
+    const isProduction = window.location.hostname !== 'localhost';
+    const basePath = isProduction ? '/landing-portifolio' : '';
     
     // Garantir que não duplicamos barras
     const cleanUrl = url.startsWith('/') ? url : `/${url}`;
-    return `${basePath}${cleanUrl}`;
+    const result = `${basePath}${cleanUrl}`;
+    
+    // Log para debug
+    console.log(`URL original: ${url}, URL com basePath: ${result}, isProduction: ${isProduction}`);
+    
+    return result;
   }
   
   // Em SSR, usamos o NODE_ENV
