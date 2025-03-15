@@ -1,11 +1,12 @@
 'use client';
 
-// import { motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import AnimacaoRevelar from '@/componentes/animacoes/AnimacaoRevelar';
 import { informacoesPessoais } from '@/dados';
 import { Calendar, Code2, Briefcase, GraduationCap } from 'lucide-react';
 import CardBrilhante from '@/componentes/ui/CardBrilhante';
+import { getImagePath } from '@/lib/utils';
 
 /**
  * Seção Sobre com informações pessoais e experiência
@@ -55,14 +56,14 @@ const SecaoSobre = () => {
               <div className="relative h-96 rounded-lg overflow-hidden shadow-xl shadow-blue-500/20 border border-blue-500/20">
                 {informacoesPessoais.fotoSobre ? (
                   <Image
-                    src={informacoesPessoais.fotoSobre}
+                    src={getImagePath(informacoesPessoais.fotoSobre)}
                     alt={`Foto de ${informacoesPessoais.nome}`}
                     fill
                     className="object-cover"
                   />
                 ) : informacoesPessoais.foto ? (
                   <Image
-                    src={informacoesPessoais.foto}
+                    src={getImagePath(informacoesPessoais.foto)}
                     alt={`Foto de ${informacoesPessoais.nome}`}
                     fill
                     className="object-cover"
@@ -147,4 +148,4 @@ const SecaoSobre = () => {
   );
 };
 
-export default SecaoSobre; 
+export default SecaoSobre;

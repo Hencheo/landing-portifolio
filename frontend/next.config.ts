@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // Desabilitar a geração de arquivos .map para reduzir o tamanho do build
+  productionBrowserSourceMaps: false,
 };
 
 export default nextConfig;

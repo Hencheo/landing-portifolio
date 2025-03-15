@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import TextoAnimado from '@/componentes/animacoes/TextoAnimado';
+import Botao from '@/componentes/ui/Botao';
 import { informacoesPessoais } from '@/dados';
 import { Github, Linkedin } from 'lucide-react';
 
