@@ -1,0 +1,24 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+O agente deve criar um site de portfólio interativo para exibir projetos de forma visualmente impactante e profissional. A estrutura deve seguir uma abordagem moderna e altamente responsiva, garantindo uma experiência de usuário fluida, intuitiva e otimizada para diferentes dispositivos. O foco principal é a apresentação sofisticada dos projetos, utilizando animações avançadas, transições suaves e efeitos dinâmicos para impressionar o visitante.
+
+A página inicial deve apresentar um design cinematográfico, com uma introdução que destaque a identidade profissional do usuário, incluindo uma animação sutil de entrada e um layout limpo e bem estruturado. O design deve ser baseado em princípios de UI/UX modernos, garantindo legibilidade, harmonia visual e navegação intuitiva.
+
+Cada projeto deve ser exibido de maneira única, utilizando um layout interativo que permita ao visitante explorar os detalhes sem sair da página principal. O agente deve implementar uma estrutura modular onde cada projeto possui um card expansível que, ao ser clicado, exibe detalhes adicionais, incluindo uma breve descrição, um vídeo demonstrativo do funcionamento, tecnologias utilizadas e links para o código-fonte no GitHub e para uma demo online.
+
+A navegação do site deve ser suave e interativa, utilizando um sistema de rolagem dinâmica que guie o usuário entre as seções com transições fluidas. O agente deve implementar uma barra de navegação fixa com um menu de rolagem automática para facilitar a movimentação entre seções. O design deve ser responsivo, garantindo que o conteúdo se ajuste automaticamente para telas de diferentes tamanhos sem comprometer a experiência do usuário.
+
+O agente deve implementar um sistema de modo escuro e claro, permitindo ao usuário alternar entre os temas conforme sua preferência. A paleta de cores deve ser definida de forma estratégica para manter um contraste adequado, garantindo uma experiência visual agradável em ambos os modos.
+
+O carregamento da página deve ser otimizado para evitar tempos de espera excessivos. O agente deve utilizar técnicas de lazy loading para carregar imagens e vídeos de maneira progressiva, garantindo desempenho sem comprometer a qualidade visual.
+
+As animações devem ser implementadas de maneira controlada, utilizando Framer Motion para efeitos suaves e naturais. O agente deve garantir que os efeitos não prejudiquem a performance do site, limitando a complexidade das transições quando necessário.
+
+O sistema de contato deve ser implementado com um formulário interativo que permita o envio de mensagens diretamente pela página. O formulário deve possuir validação para evitar envios inválidos e incluir links diretos para redes sociais e GitHub.
+
+O site deve ser construído utilizando React como biblioteca principal, Next.js para otimização de carregamento e roteamento, Tailwind CSS para estilização eficiente e responsiva, Framer Motion para animações e transições dinâmicas, e deve ser hospedado na Vercel para garantir alto desempenho e facilidade de deploy.
+
+As inspirações para o design e interatividade devem ser buscadas no 21st.dev e no UI Verse, garantindo um layout moderno, interações inovadoras e um impacto visual diferenciado.
