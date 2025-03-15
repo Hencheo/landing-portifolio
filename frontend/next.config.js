@@ -13,8 +13,8 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   ...(isProduction && {
-    basePath: '/landing-portifolio',
-    assetPrefix: '/landing-portifolio/',
+    basePath: '/hencheo-portifolio',
+    assetPrefix: '/hencheo-portifolio/',
   })
 }
 
