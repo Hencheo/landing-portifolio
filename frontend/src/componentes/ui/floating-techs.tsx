@@ -2,8 +2,8 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { useMousePositionRef } from '@/hooks/use-mouse-position-ref';
-import { motion } from 'framer-motion';
-import { getStaticPath } from '@/lib/utils';
+import Image from 'next/image';
+import { getImagePath } from '@/lib/utils';
 
 interface TechIcon {
   src: string;
@@ -34,7 +34,7 @@ export function FloatingTechs({ className }: FloatingTechsProps) {
   // Lista de tecnologias com posições fixas - as imagens devem estar em /public/imagens/tecnologias/
   const techIcons: TechIcon[] = [
     {
-      src: getStaticPath('/imagens/tecnologias/python.png'),
+      src: '/imagens/tecnologias/python.png',
       width: 70,
       alt: 'Python',
       fixedPosition: { x: 20, y: 25 },
@@ -47,7 +47,7 @@ export function FloatingTechs({ className }: FloatingTechsProps) {
       zIndex: 2,
     },
     {
-      src: getStaticPath('/imagens/tecnologias/javascript.png'),
+      src: '/imagens/tecnologias/javascript.png',
       width: 60,
       alt: 'JavaScript',
       fixedPosition: { x: 80, y: 30 },
@@ -60,7 +60,7 @@ export function FloatingTechs({ className }: FloatingTechsProps) {
       zIndex: 3,
     },
     {
-      src: getStaticPath('/imagens/tecnologias/react.png'),
+      src: '/imagens/tecnologias/react.png',
       width: 80,
       alt: 'React',
       fixedPosition: { x: 35, y: 75 },
@@ -73,7 +73,7 @@ export function FloatingTechs({ className }: FloatingTechsProps) {
       zIndex: 1,
     },
     {
-      src: getStaticPath('/imagens/tecnologias/node.png'),
+      src: '/imagens/tecnologias/node.png',
       width: 70,
       alt: 'Node.js',
       fixedPosition: { x: 75, y: 65 },
@@ -86,7 +86,7 @@ export function FloatingTechs({ className }: FloatingTechsProps) {
       zIndex: 2,
     },
     {
-      src: getStaticPath('/imagens/tecnologias/django.png'),
+      src: '/imagens/tecnologias/django.png',
       width: 90,
       alt: 'Django',
       fixedPosition: { x: 15, y: 60 },
@@ -99,7 +99,7 @@ export function FloatingTechs({ className }: FloatingTechsProps) {
       zIndex: 3,
     },
     {
-      src: getStaticPath('/imagens/tecnologias/sql.png'),
+      src: '/imagens/tecnologias/sql.png',
       width: 65,
       alt: 'SQL',
       fixedPosition: { x: 60, y: 15 },
@@ -199,14 +199,16 @@ export function FloatingTechs({ className }: FloatingTechsProps) {
               zIndex: icon.zIndex,
             }}
           >
-            <img
-              src={icon.src}
-              alt={icon.alt}
-              width={icon.width}
-              height="auto"
-              className="object-contain opacity-75 transition-opacity"
-              style={{ filter: 'drop-shadow(0 0 8px rgba(0, 0, 0, 0.5))' }}
-            />
+            <div style={{ width: icon.width, height: icon.width, position: 'relative' }}>
+              <Image
+                src={getImagePath(icon.src)}
+                alt={icon.alt}
+                fill
+                sizes={`${icon.width}px`}
+                className="object-contain opacity-75 transition-opacity"
+                style={{ filter: 'drop-shadow(0 0 8px rgba(0, 0, 0, 0.5))' }}
+              />
+            </div>
           </div>
         );
       })}

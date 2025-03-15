@@ -9,7 +9,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function getStaticPath(path: string) {
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+export function getImagePath(path: string): string {
+  const basePath = process.env.NODE_ENV === 'production' ? '/landing-page-portifolio' : '';
   return `${basePath}${path}`;
 }

@@ -1,5 +1,0 @@
-/*
-  Content-Security-Policy: default-src 'self' 'unsafe-inline' 'unsafe-eval' data: *.googleapis.com fonts.gstatic.com *.google-analytics.com;
-  X-Frame-Options: DENY
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: strict-origin-when-cross-origin 

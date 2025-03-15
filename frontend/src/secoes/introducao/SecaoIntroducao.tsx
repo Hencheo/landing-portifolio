@@ -7,7 +7,6 @@ import { TextRotate } from '@/componentes/ui/text-rotate';
 import { FloatingTechs } from '@/componentes/ui/floating-techs';
 import { informacoesPessoais } from '@/dados';
 import BotaoEstrela from '@/componentes/ui/BotaoEstrela';
-import { getStaticPath } from "@/lib/utils";
 
 /**
  * Seção de introdução visual com fundo animado
@@ -53,12 +52,13 @@ const SecaoIntroducao = () => {
           transition: { duration: 0.3 }
         }}
       >
-        <Image
-          width={100}
-          height={100}
-          alt="Logo"
-          src={getStaticPath("/imagens/perfil/logo.png")}
-          className="w-24 h-24 rounded-full"
+        <Image 
+          src="/imagens/perfil/logo.png" 
+          alt="Logo" 
+          width={140} 
+          height={140} 
+          className="object-contain"
+          priority
         />
       </motion.div>
       
