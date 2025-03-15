@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useMemo, useState } from "react"
-import { useTheme } from "next-themes"
 import dynamic from 'next/dynamic'
 import {
   Cloud,
@@ -18,7 +17,9 @@ export const cloudProps: Omit<ICloud, "children"> = {
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
-      paddingTop: 40,
+      height: "450px",
+      paddingTop: 20,
+      paddingBottom: 20,
     },
   },
   options: {
@@ -34,7 +35,6 @@ export const cloudProps: Omit<ICloud, "children"> = {
     outlineColour: "#0000",
     maxSpeed: 0.04,
     minSpeed: 0.02,
-    // dragControl: false,
   },
 }
 
@@ -43,16 +43,12 @@ const DynamicCloud = dynamic(() => Promise.resolve(({ children, ...props }: IClo
   return <Cloud {...props}>{children}</Cloud>
 }), { ssr: false })
 
-export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
-  const bgHex = theme === "light" ? "#f3f2ef" : "#080510"
-  const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff"
-  const minContrastRatio = theme === "dark" ? 2 : 1.2
-
+export const renderCustomIcon = (icon: SimpleIcon) => {
   return renderSimpleIcon({
     icon,
-    bgHex,
-    fallbackHex,
-    minContrastRatio,
+    bgHex: "#060606",
+    fallbackHex: "#3b82f6",
+    minContrastRatio: 2,
     size: 42,
     aProps: {
       href: undefined,
@@ -63,15 +59,15 @@ export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
   })
 }
 
-export type DynamicCloudProps = {
+export type HabilidadeIconCloudProps = {
   iconSlugs: string[]
+  categoria?: string
 }
 
 type IconData = Awaited<ReturnType<typeof fetchSimpleIcons>>
 
-export function IconCloud({ iconSlugs }: DynamicCloudProps) {
+export function HabilidadeIconCloud({ iconSlugs, categoria }: HabilidadeIconCloudProps) {
   const [data, setData] = useState<IconData | null>(null)
-  const { theme } = useTheme()
   const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
@@ -83,22 +79,40 @@ export function IconCloud({ iconSlugs }: DynamicCloudProps) {
     if (!data) return null
 
     return Object.values(data.simpleIcons).map((icon) =>
-      renderCustomIcon(icon, theme || "light"),
+      renderCustomIcon(icon),
     )
-  }, [data, theme])
+  }, [data])
 
   // Renderize um placeholder quando estiver no servidor ou carregando no cliente
   if (!isClient || !data) {
     return (
-      <div className="flex justify-center items-center w-full py-10">
-        <p className="text-neutral-400">Carregando ícones...</p>
+      <div className="relative">
+        {categoria && categoria !== 'todas' && (
+          <div className="absolute top-0 left-0 w-full text-center text-2xl font-bold text-blue-500 z-10">
+            {categoria === 'frontend' ? 'Frontend' :
+             categoria === 'backend' ? 'Backend' :
+             'Data Science & Outros'}
+          </div>
+        )}
+        <div className="flex justify-center items-center w-full h-[450px]">
+          <p className="text-neutral-400">Carregando ícones...</p>
+        </div>
       </div>
     )
   }
 
   return (
-    <DynamicCloud {...cloudProps as ICloud}>
-      <>{renderedIcons}</>
-    </DynamicCloud>
+    <div className="relative">
+      {categoria && categoria !== 'todas' && (
+        <div className="absolute top-0 left-0 w-full text-center text-2xl font-bold text-blue-500 z-10">
+          {categoria === 'frontend' ? 'Frontend' :
+           categoria === 'backend' ? 'Backend' :
+           'Data Science & Outros'}
+        </div>
+      )}
+      <DynamicCloud {...cloudProps as ICloud}>
+        <>{renderedIcons}</>
+      </DynamicCloud>
+    </div>
   )
 }

@@ -1,41 +1,48 @@
 @echo off
-echo Iniciando o Projeto de Portfolio...
-echo.
+SETLOCAL
 
-REM Verificar se o Node.js está instalado
-where node >nul 2>nul
-if %ERRORLEVEL% neq 0 (
-    echo Erro: Node.js não encontrado. Por favor, instale o Node.js para continuar.
-    echo Visite https://nodejs.org para baixar e instalar.
+:: Definir cores para o terminal
+color 0A
+
+:: Verificar se o Node.js está instalado
+WHERE node >nul 2>nul
+IF %ERRORLEVEL% NEQ 0 (
+    echo [X] Node.js nao encontrado! Por favor, instale o Node.js antes de continuar.
     pause
     exit /b 1
 )
 
-REM Verificar a versão do Node.js
-for /f "tokens=*" %%i in ('node -v') do set NODE_VERSION=%%i
-echo Node.js %NODE_VERSION% detectado.
-echo.
-
-REM Verificar se as dependências estão instaladas
-if not exist "node_modules" (
-    echo Instalando dependências...
-    call npm install
-    if %ERRORLEVEL% neq 0 (
-        echo Erro ao instalar dependências.
-        pause
-        exit /b 1
-    )
-    echo Dependências instaladas com sucesso.
-) else (
-    echo Dependências já instaladas.
+:: Obter a versão do Node.js
+FOR /F "tokens=1,2 delims=v." %%a IN ('node --version') DO (
+    set NODE_MAJOR=%%a
 )
+
+:: Verificar se a versão do Node.js é adequada
+echo [i] Verificando versao do Node.js...
+node -e "process.exit(process.version.startsWith('v20') || process.version.startsWith('v18') ? 0 : 1)" >nul 2>nul
+IF %ERRORLEVEL% NEQ 0 (
+    echo [!] Recomendamos usar Node.js v18 ou v20 para este projeto.
+    echo [!] Versao atual: %NODE_MAJOR%
+    echo [?] Deseja continuar mesmo assim? (S/N)
+    SET /P CONTINUE="> "
+    IF /I NOT "%CONTINUE%"=="S" exit /b 1
+)
+
+:: Mensagem de boas-vindas
+echo.
+echo =================================================================
+echo =         Bem-vindo ao Ambiente de Desenvolvimento              =
+echo =================================================================
 echo.
 
-REM Iniciar o servidor de desenvolvimento
-echo Iniciando o servidor de desenvolvimento...
-echo Acesse http://localhost:3000 no seu navegador.
-echo Pressione Ctrl+C para encerrar o servidor.
+:: Navegar para a pasta do projeto e iniciar o servidor de desenvolvimento
+cd /d "%~dp0"
+echo [i] Instalando dependencias...
+call npm install
+echo [i] Iniciando o servidor de desenvolvimento...
+echo [i] A aplicacao estara disponivel em http://localhost:3000
+echo [i] Pressione Ctrl+C para encerrar o servidor quando quiser.
 echo.
 call npm run dev
 
-pause 
+ENDLOCAL 
