@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { informacoesPessoais } from '@/dados';
 import { Github, Linkedin, Phone, Mail } from 'lucide-react';
-import { BackgroundBeamsWithCollision } from '@/components/ui/background-beams-with-collision';
+import { BackgroundBeamsWithCollision } from '@/componentes/ui/background-beams-with-collision';
+import { useBasePath } from '@/contextos/BasePath';
 
 /**
  * Componente de rodapé do site
@@ -12,6 +12,8 @@ import { BackgroundBeamsWithCollision } from '@/components/ui/background-beams-w
  * Margens ajustadas para evitar sobreposição com o dock vertical
  */
 const Rodape = () => {
+  const { informacoesPessoaisAtualizadas: informacoesPessoais } = useBasePath();
+
   // Links de navegação
   const links = [
     { nome: 'Início', href: '#introducao' },

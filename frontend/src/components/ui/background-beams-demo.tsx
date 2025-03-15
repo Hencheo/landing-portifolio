@@ -1,6 +1,6 @@
 "use client";
 
-import { BackgroundBeamsWithCollision } from "./background-beams-with-collision";
+import { BackgroundBeamsWithCollision } from "@/componentes/ui/background-beams-with-collision";
 
 interface BackgroundBeamsDemoProps {
   children?: React.ReactNode;
