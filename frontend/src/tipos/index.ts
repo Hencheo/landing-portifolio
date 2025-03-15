@@ -8,12 +8,12 @@ export interface Projeto {
   titulo: string;
   descricao: string;
   imagemCapa: string;
-  imagensGaleria?: string[];
+  imagens: string[];
   videoDemo?: string;
   arquivoNotebook?: string; // Caminho para notebooks Jupyter
   tecnologias: string[];
-  linkGithub?: string;
-  linkDemo?: string;
+  linkGithub: string;
+  linkDemo: string;
   destaque: boolean;
   dataPublicacao: string;
 }

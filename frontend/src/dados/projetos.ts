@@ -1,4 +1,5 @@
 import { Projeto } from '@/tipos';
+import { getStaticPath } from '@/lib/utils';
 
 /**
  * Dados dos projetos reais para o portfólio
@@ -6,16 +7,16 @@ import { Projeto } from '@/tipos';
 export const projetos: Projeto[] = [
   {
     id: 1,
-    titulo: 'ViCoin - Aplicativo de Gestão Financeira',
-    descricao: 'Solução completa para gestão financeira pessoal que resolve o problema da falta de controle sobre gastos diários. Permite registro de ganhos e gastos, visualização de relatórios detalhados sobre comportamento financeiro e integração com bancos digitais para acompanhamento preciso.',
-    imagemCapa: '/imagens/projetos/viccoin/viccoin-1.PNG',
-    imagensGaleria: [
-      '/imagens/projetos/viccoin/viccoin-2.PNG',
-      '/imagens/projetos/viccoin/viccoin-3.PNG',
-      '/imagens/projetos/viccoin/viccoin-4.PNG',
+    titulo: 'VicCoin',
+    descricao: 'Projeto de uma criptomoeda desenvolvida em Python.',
+    tecnologias: ['Python', 'Django', 'React'],
+    imagemCapa: getStaticPath('/imagens/projetos/viccoin/viccoin-1.PNG'),
+    imagens: [
+      getStaticPath('/imagens/projetos/viccoin/viccoin-2.PNG'),
+      getStaticPath('/imagens/projetos/viccoin/viccoin-3.PNG'),
+      getStaticPath('/imagens/projetos/viccoin/viccoin-4.PNG'),
     ],
     videoDemo: 'https://www.youtube.com/embed/exemplo2',
-    tecnologias: ['Django', 'Django REST Framework', 'React Native', 'Expo', 'Firebase Firestore', 'Firebase Authentication', 'Render', 'Autenticação Biométrica'],
     linkGithub: 'https://github.com/hencheo/vicoin',
     linkDemo: 'https://vicoin-demo.vercel.app',
     destaque: true,
@@ -23,17 +24,17 @@ export const projetos: Projeto[] = [
   },
   {
     id: 2,
-    titulo: 'Sistema de Cálculo de Médias Acadêmicas',
-    descricao: 'Desenvolvido para resolver a dificuldade dos estudantes em calcular suas médias corretamente, este sistema permite cadastro de usuários, inserção de matérias e acompanhamento automático de notas. A solução fornece uma experiência fluida e simplifica o processo de controle acadêmico.',
-    imagemCapa: '/imagens/projetos/calculo-nota/calculo-nota-1.png',
-    imagensGaleria: [
-      '/imagens/projetos/calculo-nota/calculo-nota-2.png',
-      '/imagens/projetos/calculo-nota/calculo-nota-3.png',
-      '/imagens/projetos/calculo-nota/calculo-nota-4.png',
-      '/imagens/projetos/calculo-nota/calculo-nota-5.png',
+    titulo: 'Cálculo de Nota',
+    descricao: 'Sistema de cálculo de notas para alunos.',
+    tecnologias: ['Python', 'Django', 'React'],
+    imagemCapa: getStaticPath('/imagens/projetos/calculo-nota/calculo-nota-1.png'),
+    imagens: [
+      getStaticPath('/imagens/projetos/calculo-nota/calculo-nota-2.png'),
+      getStaticPath('/imagens/projetos/calculo-nota/calculo-nota-3.png'),
+      getStaticPath('/imagens/projetos/calculo-nota/calculo-nota-4.png'),
+      getStaticPath('/imagens/projetos/calculo-nota/calculo-nota-5.png'),
     ],
     videoDemo: 'https://www.youtube.com/embed/exemplo1',
-    tecnologias: ['PostgreSQL', 'SQL', 'Next.js', 'Node.js', 'Tailwind CSS'],
     linkGithub: 'https://github.com/hencheo/calculo-notas',
     linkDemo: 'https://calculo-notas-demo.vercel.app',
     destaque: true,
@@ -41,18 +42,18 @@ export const projetos: Projeto[] = [
   },
   {
     id: 3,
-    titulo: 'Análise de Preços de Aluguéis no Rio de Janeiro',
-    descricao: 'Projeto de ciência de dados que soluciona a falta de transparência no mercado imobiliário do Rio de Janeiro. Analisa os preços dos aluguéis ao longo do tempo e gera relatórios detalhados sobre os bairros mais caros em cada período, fornecendo insights valiosos para quem busca entender melhor o mercado.',
-    imagemCapa: '/imagens/projetos/analise-aluguel/analise-alugueis-1.png',
-    imagensGaleria: [
-      '/imagens/projetos/analise-aluguel/analise-alugueis-2.png',
-      '/imagens/projetos/analise-aluguel/analise-alugueis-3.png',
-      '/imagens/projetos/analise-aluguel/analise-alugueis-4.png',
-      '/imagens/projetos/analise-aluguel/analise-alugueis-5.png',
-      '/imagens/projetos/analise-aluguel/analise-alugueis-6.png',
+    titulo: 'Análise de Aluguéis',
+    descricao: 'Análise de dados de aluguéis em São Paulo.',
+    tecnologias: ['Python', 'Pandas', 'Jupyter'],
+    imagemCapa: getStaticPath('/imagens/projetos/analise-aluguel/analise-alugueis-1.png'),
+    imagens: [
+      getStaticPath('/imagens/projetos/analise-aluguel/analise-alugueis-2.png'),
+      getStaticPath('/imagens/projetos/analise-aluguel/analise-alugueis-3.png'),
+      getStaticPath('/imagens/projetos/analise-aluguel/analise-alugueis-4.png'),
+      getStaticPath('/imagens/projetos/analise-aluguel/analise-alugueis-5.png'),
+      getStaticPath('/imagens/projetos/analise-aluguel/analise-alugueis-6.png'),
     ],
-    arquivoNotebook: '/imagens/projetos/analise-aluguel/Imóveis_Documentado.ipynb',
-    tecnologias: ['Python', 'Pandas', 'Matplotlib', 'Data Science', 'Análise de Dados', 'Visualização de Dados'],
+    arquivoNotebook: getStaticPath('/imagens/projetos/analise-aluguel/Imóveis_Documentado.ipynb'),
     linkGithub: 'https://github.com/hencheo/analise-alugueis-rio',
     linkDemo: 'https://colab.research.google.com/github/hencheo/analise-alugueis-rio',
     destaque: true,
