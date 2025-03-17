@@ -118,7 +118,7 @@ const SecaoIntroducao = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="mt-8 flex flex-col items-center gap-5"
           >
-            <p className="text-white text-lg sm:text-xl mb-2">
+            <p className="text-white text-lg sm:text-xl mb-2 text-justify px-4 max-w-2xl">
               Que tal saber mais sobre mim ou ver alguns projetos que ja fiz?
             </p>
             <div className="flex gap-8 flex-wrap justify-center">

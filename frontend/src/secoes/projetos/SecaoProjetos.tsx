@@ -6,6 +6,7 @@ import AnimacaoRevelar from '@/componentes/animacoes/AnimacaoRevelar';
 import CartaoProjeto from '@/componentes/projetos/CartaoProjeto';
 import { Timeline } from '@/componentes/ui/Timeline';
 import { projetos } from '@/dados';
+import { MdOutlineCollections } from 'react-icons/md';
 
 /**
  * Seção de Projetos com exibição em formato de timeline
@@ -69,7 +70,7 @@ const SecaoProjetos = () => {
             Meus Projetos
           </h2>
           <div className="w-20 h-1 bg-blue-500 mx-auto mb-8"></div>
-          <p className="text-center text-gray-300 max-w-2xl mx-auto mb-6 md:mb-10">
+          <p className="text-justify text-gray-300 max-w-2xl mx-auto mb-6 md:mb-10">
             Explore meus trabalhos em diferentes áreas de atuação.
             Cada projeto representa um conjunto de habilidades e soluções únicas.
           </p>
@@ -84,11 +85,15 @@ const SecaoProjetos = () => {
         <div className="mt-6 text-center">
           <motion.button
             onClick={() => setMostrarMensagem(true)}
-            className="inline-block px-8 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/20"
-            whileHover={{ scale: 1.05 }}
+            className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white font-medium text-lg rounded-md hover:bg-blue-700 transition-all duration-300 shadow-lg shadow-blue-600/40 border-2 border-blue-500"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.6)" 
+            }}
             whileTap={{ scale: 0.98 }}
           >
-            Ver todos os projetos
+            <MdOutlineCollections className="text-2xl" />
+            <span>Ver todos os projetos</span>
           </motion.button>
 
           {/* Mensagem de desenvolvimento */}
@@ -98,15 +103,19 @@ const SecaoProjetos = () => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="mt-4 text-blue-400 text-sm"
+                transition={{ duration: 0.2 }}
+                className="mt-4 text-blue-400 text-sm bg-blue-950/30 p-3 rounded-lg max-w-md mx-auto backdrop-blur-sm"
               >
-                Página em desenvolvimento. Em breve você poderá ver todos os projetos! 😊
-                <button
-                  onClick={() => setMostrarMensagem(false)}
-                  className="ml-2 text-blue-500 hover:text-blue-400"
-                >
-                  ✕
-                </button>
+                <div className="flex items-center justify-between">
+                  <span className="text-justify">Página em desenvolvimento. Em breve você poderá ver todos os projetos! 😊</span>
+                  <button
+                    onClick={() => setMostrarMensagem(false)}
+                    className="ml-2 text-blue-400 hover:text-blue-300 p-1 rounded-full hover:bg-blue-800/30 transition-colors"
+                    aria-label="Fechar mensagem"
+                  >
+                    ✕
+                  </button>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

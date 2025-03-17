@@ -106,7 +106,7 @@ const SecaoSobre = () => {
                 Conheça um pouco da minha história
               </h3>
               
-              <div className="space-y-4 text-gray-300">
+              <div className="space-y-4 text-gray-300 text-justify">
                 <p>
                   Apaixonado por criar soluções que resolvem problemas reais.
                 </p>

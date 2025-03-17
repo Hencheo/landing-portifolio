@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Projeto } from '@/tipos';
 import Botao from '../ui/Botao';
-import { ExternalLink, Github, Play, FileText } from 'lucide-react';
+import { ExternalLink, Github, Play, FileText, ChevronDown, ChevronUp, X } from 'lucide-react';
 import { getImagePath } from '@/lib/utils';
 
 interface CartaoProjetoProps {
@@ -21,10 +21,24 @@ interface CartaoProjetoProps {
 const CartaoProjeto = ({ projeto, indice }: CartaoProjetoProps) => {
   // Estado para controlar se o cartão está expandido
   const [expandido, setExpandido] = useState(false);
+  // Estado para controlar o modal de imagem ampliada
+  const [imagemAmpliada, setImagemAmpliada] = useState<string | null>(null);
 
   // Função para alternar o estado de expandido
   const handleToggleExpandido = () => {
     setExpandido(!expandido);
+  };
+
+  // Função para abrir o modal com a imagem ampliada
+  const abrirImagemAmpliada = (e: React.MouseEvent, imagem: string) => {
+    e.stopPropagation();
+    setImagemAmpliada(imagem);
+  };
+
+  // Função para fechar o modal de imagem ampliada
+  const fecharImagemAmpliada = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setImagemAmpliada(null);
   };
 
   // Animações para o cartão
@@ -81,7 +95,7 @@ const CartaoProjeto = ({ projeto, indice }: CartaoProjetoProps) => {
       {/* Conteúdo básico do cartão */}
       <div className="p-5">
         <h3 className="text-xl font-bold text-white mb-3">{projeto.titulo}</h3>
-        <p className="text-gray-300 text-sm mb-4 line-clamp-2">
+        <p className="text-gray-300 text-sm mb-4 line-clamp-2 text-justify">
           {projeto.descricao}
         </p>
 
@@ -104,9 +118,10 @@ const CartaoProjeto = ({ projeto, indice }: CartaoProjetoProps) => {
 
         {/* Botão para expandir/recolher */}
         <Botao 
-          variante="fantasma" 
+          variante="primario" 
           tamanho="pequeno" 
-          className="w-full"
+          className="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white font-medium"
+          icone={expandido ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
           onClick={(e) => {
             e.stopPropagation();
             handleToggleExpandido();
@@ -126,7 +141,7 @@ const CartaoProjeto = ({ projeto, indice }: CartaoProjetoProps) => {
         {/* Descrição completa */}
         <div className="mb-4">
           <h4 className="text-lg font-semibold text-white mb-2">Descrição</h4>
-          <p className="text-gray-300 text-sm">
+          <p className="text-gray-300 text-sm text-justify">
             {projeto.descricao}
           </p>
         </div>
@@ -137,7 +152,11 @@ const CartaoProjeto = ({ projeto, indice }: CartaoProjetoProps) => {
             <h4 className="text-lg font-semibold text-white mb-2">Galeria</h4>
             <div className="grid grid-cols-3 gap-2">
               {projeto.imagensGaleria.map((imagem, index) => (
-                <div key={index} className="relative h-20 rounded-md overflow-hidden border border-blue-500/10">
+                <div 
+                  key={index} 
+                  className="relative h-20 rounded-md overflow-hidden border border-blue-500/10 cursor-pointer transform transition-transform hover:scale-105"
+                  onClick={(e) => abrirImagemAmpliada(e, imagem)}
+                >
                   <Image
                     src={imagem}
                     alt={`Imagem ${index + 1} do projeto ${projeto.titulo}`}
@@ -234,6 +253,47 @@ const CartaoProjeto = ({ projeto, indice }: CartaoProjetoProps) => {
           )}
         </div>
       </motion.div>
+
+      {/* Modal de Imagem Ampliada */}
+      <AnimatePresence>
+        {imagemAmpliada && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-80"
+            onClick={fecharImagemAmpliada}
+          >
+            <motion.div
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
+              className="relative max-w-4xl max-h-[90vh] overflow-hidden rounded-lg"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative w-full h-full">
+                <div className="absolute top-2 right-2 z-10">
+                  <button 
+                    className="bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70 transition-all"
+                    onClick={fecharImagemAmpliada}
+                    aria-label="Fechar imagem"
+                  >
+                    <X size={20} />
+                  </button>
+                </div>
+                <div className="relative w-full h-[80vh]">
+                  <Image
+                    src={imagemAmpliada}
+                    alt="Imagem ampliada do projeto"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };

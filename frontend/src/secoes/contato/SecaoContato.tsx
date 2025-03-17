@@ -57,7 +57,7 @@ const SecaoContato = () => {
             Entre em Contato
           </h2>
           <div className="w-20 h-1 bg-blue-500 mx-auto mb-8"></div>
-          <p className="text-center text-gray-300 max-w-2xl mx-auto mb-12">
+          <p className="text-justify text-gray-300 max-w-2xl mx-auto mb-12">
             Tem um projeto em mente ou quer conversar sobre oportunidades de trabalho?
             Ficarei feliz em responder suas perguntas e discutir como posso ajudar.
           </p>
@@ -240,13 +240,13 @@ const SecaoContato = () => {
                 
                 {/* Mensagem de status */}
                 {statusEnvio === 'sucesso' && (
-                  <p className="text-green-400 text-sm mt-2">
+                  <p className="text-green-400 text-sm mt-2 text-justify">
                     Mensagem enviada com sucesso! Entrarei em contato em breve.
                   </p>
                 )}
                 
                 {statusEnvio === 'erro' && (
-                  <p className="text-red-400 text-sm mt-2">
+                  <p className="text-red-400 text-sm mt-2 text-justify">
                     Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.
                   </p>
                 )}
